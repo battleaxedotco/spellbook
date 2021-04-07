@@ -30,6 +30,11 @@ async function init() {
  */
 async function getConfig() {
   let DEFAULT_CONFIG = CONFIG;
+
+  const hasSpellFolder = UTILS.exists(`${path.resolve("./")}/.spellbook`);
+
+  if (!hasSpellFolder) UTILS.makeFolder(`${path.resolve("./")}/.spellbook`);
+
   let hasLocalConfig =
     UTILS.exists(`${path.resolve("./")}/.spellbook`) &&
     UTILS.exists(`${path.resolve("./")}/.spellbook/config.js`);
@@ -50,7 +55,6 @@ async function getConfig() {
     return MAIN_CONFIG;
   } else {
     // Create a file and folder relative to this project
-    UTILS.makeFolder(`${path.resolve("./")}/.spellbook`);
 
     let templateContents = await UTILS.readFile(
       `${path.resolve("./")}/spellbook/.spellbook/config.js`,
