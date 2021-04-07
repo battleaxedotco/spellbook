@@ -69,7 +69,7 @@ async function getConfig() {
     // );
     UTILS.makeFile(
       `${path.resolve("./")}/.spellbook/config.js`,
-      JSON.parse(STRINGCONFIG).template
+      STRINGCONFIG.template
     );
 
     return DEFAULT_CONFIG;
