@@ -14,6 +14,7 @@ const ora = require("ora");
 // These will eventually be pointing to NPM package instead of local files
 let UTILS = require("../utils/arcanophile");
 let CONFIG = require("../.spellbook/config");
+let STRINGCONFIG = require("../.spellbook/config.json");
 
 /**
  * The main start function invoked by the "npm run spellbook" / "spellbook" command
@@ -54,21 +55,21 @@ async function getConfig() {
   } else {
     // Create a file and folder relative to this project
 
-    let templateContents = await UTILS.readFile(
-      `${path.resolve("./")}/spellbook/.spellbook/config.js`,
-      false
-    );
-    UTILS.makeFile(
-      `${path.resolve("./")}/spellbook/.spellbook/config.json`,
-      JSON.stringify({ template: templateContents })
-    );
-    let stringContents = await UTILS.readFile(
-      `${path.resolve("./")}/spellbook/.spellbook/config.json`,
-      false
-    );
+    // let templateContents = await UTILS.readFile(
+    //   `${path.resolve("./")}/spellbook/.spellbook/config.js`,
+    //   false
+    // );
+    // UTILS.makeFile(
+    //   `${path.resolve("./")}/spellbook/.spellbook/config.json`,
+    //   JSON.stringify({ template: templateContents })
+    // );
+    // let stringContents = await UTILS.readFile(
+    //   `${path.resolve("./")}/node_modules/spellbook/.spellbook/config.json`,
+    //   false
+    // );
     UTILS.makeFile(
       `${path.resolve("./")}/.spellbook/config.js`,
-      JSON.parse(stringContents).template
+      JSON.parse(STRINGCONFIG).template
     );
 
     return DEFAULT_CONFIG;
