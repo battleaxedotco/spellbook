@@ -30,10 +30,9 @@ async function init() {
  */
 async function getConfig() {
   let DEFAULT_CONFIG = CONFIG;
-  if (!UTILS.exists(`${path.resolve("./")}/.spellbook`)) return DEFAULT_CONFIG;
-  let hasLocalConfig = UTILS.exists(
-    `${path.resolve("./")}/.spellbook/config.js`
-  );
+  let hasLocalConfig =
+    UTILS.exists(`${path.resolve("./")}/.spellbook`) &&
+    UTILS.exists(`${path.resolve("./")}/.spellbook/config.js`);
   if (hasLocalConfig) {
     let LOCAL_CONFIG = require(`${path.resolve("./")}/.spellbook/config.js`);
 
