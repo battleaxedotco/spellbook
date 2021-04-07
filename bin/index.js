@@ -5,7 +5,6 @@
  * spells, need to potentially manually parse these.
  */
 
-const deepMerge = require("deepmerge");
 const path = require("path");
 const fs = require("fs");
 const inquirer = require("inquirer");
